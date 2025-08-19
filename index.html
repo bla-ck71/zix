@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZIX OFFICIAL - تحديث البايو والعناصر</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a1a;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* خلفية متحركة باللون الأزرق */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: float 15s infinite linear;
+        }
+        
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            background: #0066ff;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .circle-2 {
+            width: 500px;
+            height: 500px;
+            background: #0099ff;
+            top: 60%;
+            left: 70%;
+            animation-delay: -5s;
+        }
+        
+        .circle-3 {
+            width: 300px;
+            height: 300px;
+            background: #0033cc;
+            top: 10%;
+            left: 80%;
+            animation-delay: -10s;
+        }
+        
+        .circle-4 {
+            width: 450px;
+            height: 450px;
+            background: #00aaff;
+            top: 70%;
+            left: 20%;
+            animation-delay: -7s;
+        }
+        
+        .circle-5 {
+            width: 350px;
+            height: 350px;
+            background: #0044ff;
+            top: 30%;
+            left: 60%;
+            animation-delay: -12s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(50px, 30px) scale(1.1);
+            }
+            50% {
+                transform: translate(0, 60px) scale(1);
+            }
+            75% {
+                transform: translate(-50px, 30px) scale(1.1);
+            }
+        }
+        
+        /* قائمة التنقل */
+        .nav-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .nav-toggle {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #0066ff, #0099ff);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 102, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.7);
+        }
+        
+        .nav-dot {
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            margin: 2px 0;
+        }
+        
+        .nav-menu {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: rgba(10, 10, 30, 0.9);
+            border-radius: 10px;
+            padding: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+        
+        .nav-menu.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .nav-item {
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-item:hover {
+            background: rgba(0, 102, 255, 0.2);
+        }
+        
+        .nav-item i {
+            margin-left: 10px;
+            color: #0099ff;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding: 30px 0;
+        }
+        
+        .animated-title {
+            font-size: 4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #0066ff, #0099ff, #00ccff, #0066ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 3s ease infinite;
+            text-shadow: 0 0 15px rgba(0, 102, 255, 0.5);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .subtitle {
+            color: #aaccff;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(20, 20, 40, 0.8);
+            border: 1px solid #3344aa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .card:hover {
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .card-title {
+            color: #0099ff;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #3344aa;
+            padding-bottom: 10px;
+        }
+        
+        .card-title i {
+            margin-left: 10px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #aaccff;
+            font-weight: 600;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(40, 40, 70, 0.7);
+            border: 1px solid #4466cc;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #0099ff;
+            box-shadow: 0 0 15px rgba(0, 153, 255, 0.3);
+            background: rgba(50, 50, 90, 0.8);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #0066ff, #0099ff);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        button:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+        
+        button:hover {
+            background: linear-gradient(45deg, #0099ff, #00ccff);
+            box-shadow: 0 0 20px rgba(0, 153, 255, 0.5);
+        }
+        
+        button:active {
+            transform: scale(0.98);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+        
+        .success {
+            background: rgba(0, 150, 100, 0.3);
+            border: 1px solid #00cc99;
+            color: #99ffcc;
+        }
+        
+        .error {
+            background: rgba(150, 0, 0, 0.3);
+            border: 1px solid #cc0066;
+            color: #ff99aa;
+        }
+        
+        .warning {
+            background: rgba(150, 100, 0, 0.3);
+            border: 1px solid #cc9900;
+            color: #ffcc66;
+        }
+        
+        .info {
+            background: rgba(0, 100, 150, 0.3);
+            border: 1px solid #0099cc;
+            color: #99ccff;
+        }
+        
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(0, 153, 255, 0.5);
+            border-radius: 50%;
+            animation: floatParticle 10s infinite linear;
+        }
+        
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100vw) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #6688cc;
+            font-size: 0.9rem;
+            border-top: 1px solid #3344aa;
+        }
+        
+        .api-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-left: 8px;
+        }
+        
+        .status-online {
+            background-color: #00ff99;
+            box-shadow: 0 0 8px #00ff99;
+        }
+        
+        .status-offline {
+            background-color: #ff0066;
+            box-shadow: 0 0 8px #ff0066;
+        }
+        
+        .debug-info {
+            background: rgba(30, 30, 60, 0.7);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #aaccff;
+            display: none;
+        }
+        
+        .debug-toggle {
+            color: #0099ff;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        
+        .items-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .item-input {
+            margin-bottom: 0;
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #0099ff, transparent);
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .section-divider:before {
+            content: 'القسم الجديد';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0a0a1a;
+            padding: 0 15px;
+            color: #0099ff;
+            font-weight: bold;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .animated-title {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 70px 15px 15px;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+            
+            .items-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .items-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .nav-toggle {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- خلفية متحركة -->
+    <div class="bg-animation">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+        <div class="bg-circle circle-4"></div>
+        <div class="bg-circle circle-5"></div>
+    </div>
+    
+    <div class="particles" id="particles"></div>
+    
+    <!-- قائمة التنقل -->
+    <div class="nav-container">
+        <div class="nav-toggle" id="nav-toggle">
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+            <div class="nav-item" data-target="bio-section">
+                <i class="fas fa-user-circle"></i> تحديث البايو
+            </div>
+            <div class="nav-item" data-target="items-section">
+                <i class="fas fa-cubes"></i> إرسال العناصر
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1 class="animated-title">ZIX OFFICIAL</h1>
+            <p class="subtitle">منصة إدارة المحتوى والبيانات</p>
+            <div class="api-status">
+                <span>حالة الخادم:</span>
+                <div class="status-indicator" id="status-indicator"></div>
+                <span id="status-text">جاري الفحص...</span>
+            </div>
+        </header>
+        
+        <!-- قسم البايو -->
+        <div class="content-section active" id="bio-section">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-key"></i> رمز الوصول (Access Token)</h2>
+                <div class="input-group">
+                    <label for="access">أدخل رمز الوصول:</label>
+                    <input type="text" id="access" placeholder="أدخل الرمز السري هنا...">
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-file-alt"></i> النص الطويل (Long Bio)</h2>
+                <div class="input-group">
+                    <label for="bio">أدخل البايو الطويل هنا:</label>
+                    <textarea id="bio" placeholder="اكتب النص الطويل الذي تريد تحديثه هنا..."></textarea>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-sync-alt"></i> تحديث البايو</h2>
+                <button id="update-btn">تحديث البايو الآن</button>
+                <div id="result" class="result"></div>
+            </div>
+        </div>
+        
+        <!-- قسم العناصر -->
+        <div class="content-section" id="items-section">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-cube"></i> إرسال العناصر</h2>
+                <div class="input-group">
+                    <label for="elements-access">رمز الوصول للعناصر:</label>
+                    <input type="text" id="elements-access" placeholder="أدخل رمز الوصول للعناصر...">
+                </div>
+                
+                <div class="input-group">
+                    <label>أدخل العناصر (15 عنصر):</label>
+                    <div class="items-container">
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 1">
+                        </div>
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 2">
+                        </div>
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 3">
+                        </div>
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 4">
+                        </div>
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 5">
+                        </div>
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 6">
+                        </div>
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 7">
+                        </div>
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 8">
+                        </div>
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 9">
+                        </div>
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 10">
+                        </div>
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 11">
+                        </div>
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 12">
+                        </div>
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 13">
+                        </div>
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 14">
+                        </div>
+                        <div class="item-input">
+                            <input type="text" class="item-field" placeholder="العنصر 15">
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="send-items-btn">إرسال العناصر</button>
+                <div id="items-result" class="result"></div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>ZIX OFFICIAL &copy; 2023 - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+        // إنشاء الجسيمات المتحركة
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            particlesContainer.innerHTML = '';
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 10 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 10;
+                const duration = Math.random() * 10 + 10;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}vw`;
+                particle.style.top = `${posY}vh`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // التحقق من حالة الخادم
+        async function checkServerStatus() {
+            const statusIndicator = document.getElementById('status-indicator');
+            const statusText = document.getElementById('status-text');
+            
+            try {
+                // هذا اختبار اتصال بسيط
+                const testResponse = await fetch('https://zix-official-bio-access.vercel.app', { 
+                    method: 'HEAD',
+                    mode: 'no-cors'
+                });
+                
+                statusIndicator.className = 'status-indicator status-online';
+                statusText.textContent = 'متصل - الخادم يعمل';
+            } catch (error) {
+                statusIndicator.className = 'status-indicator status-offline';
+                statusText.textContent = 'وضع المحاكاة - الخادم غير متاح';
+                console.error('خطأ في الاتصال:', error);
+            }
+        }
+        
+        // محاكاة استجابة API عند فشل الاتصال
+        function simulateAPIResponse(access, bio) {
+            return new Promise((resolve) => {
+                // محاكاة وقت الانتظار للاتصال
+                setTimeout(() => {
+                    resolve({
+                        success: true,
+                        message: "تم تحديث البايو بنجاح (محاكاة)",
+                        simulated: true,
+                        data: {
+                            access: access,
+                            bio: bio,
+                            timestamp: new Date().toLocaleString()
+                        }
+                    });
+                }, 2000);
+            });
+        }
+        
+        // محاكاة إرسال العناصر
+        function simulateItemsResponse(access, items) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve({
+                        success: true,
+                        message: "تم إرسال العناصر بنجاح (محاكاة)",
+                        simulated: true,
+                        data: {
+                            access: access,
+                            items: items,
+                            count: items.length,
+                            timestamp: new Date().toLocaleString()
+                        }
+                    });
+                }, 2000);
+            });
+        }
+        
+        // إدارة التنقل
+        document.getElementById('nav-toggle').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        });
+        
+        // إضافة مستمعي الأحداث لعناصر القائمة
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                
+                // إخفاء جميع الأقسام
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // إظهار القسم المحدد
+                document.getElementById(targetId).classList.add('active');
+                
+                // إخفاء القائمة
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+        
+        // تحديث البايو
+        document.getElementById('update-btn').addEventListener('click', async function() {
+            const access = document.getElementById('access').value.trim();
+            const bio = document.getElementById('bio').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (!access) {
+                showResult('error', 'يرجى إدخال رمز الوصول', resultDiv);
+                return;
+            }
+            
+            if (!bio) {
+                showResult('error', 'يرجى إدخال النص الطويل', resultDiv);
+                return;
+            }
+            
+            // إظهار تحميل
+            this.innerHTML = 'جاري التحديث... <i class="fas fa-spinner fa-spin"></i>';
+            this.disabled = true;
+            
+            // استدعاء API
+            const apiUrl = `https://zix-official-bio-access.vercel.app/get?access=${encodeURIComponent(access)}&text=${encodeURIComponent(bio)}`;
+            
+            try {
+                // محاولة الاتصال بالخادم
+                const response = await fetch(apiUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                    },
+                    mode: 'cors'
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    showResult('success', 'تم تحديث البايو بنجاح!', resultDiv);
+                } else {
+                    throw new Error(`استجابة الخادم: ${response.status}`);
+                }
+            } catch (error) {
+                console.error('خطأ في الاتصال:', error);
+                
+
+                const simulatedResponse = await simulateAPIResponse(access, bio);
+                showResult('warning', 
+                    `تمت <br>
+                    <small>المحاكاة: ${simulatedResponse.message}</small>`, resultDiv);
+                
+                console.log('استجابة محاكاة:', simulatedResponse);
+            } finally {
+                this.innerHTML = 'تحديث البايو الآن';
+                this.disabled = false;
+            }
+        });
+        
+        // إرسال العناصر
+        document.getElementById('send-items-btn').addEventListener('click', async function() {
+            const access = document.getElementById('elements-access').value.trim();
+            const itemInputs = document.querySelectorAll('.item-field');
+            const items = Array.from(itemInputs).map(input => input.value.trim()).filter(item => item !== '');
+            const resultDiv = document.getElementById('items-result');
+            
+            if (!access) {
+                showResult('error', 'يرجى إدخال رمز Access', resultDiv);
+                return;
+            }
+            
+            if (items.length === 0) {
+                showResult('error', 'يرجى إدخال عنصر واحد على الأقل', resultDiv);
+                return;
+            }
+            
+            // إظهار تحميل
+            this.innerHTML = 'جاري الإرسال... <i class="fas fa-spinner fa-spin"></i>';
+            this.disabled = true;
+            
+            // بناء رابط API مع العناصر
+            let apiUrl = `https://zix-official-elements-2.vercel.app/get?access=${encodeURIComponent(access)}`;
+            
+            // إضافة جميع العناصر إلى الرابط
+            items.forEach(item => {
+                apiUrl += `&itemid=${encodeURIComponent(item)}`;
+            });
+            
+            try {
+                // محاولة الاتصال بالخادم
+                const response = await fetch(apiUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                    // إضافة أي رؤوس أخرى مطلوبة هنا
+                    // 'Authorization': 'Bearer YOUR_TOKEN'
+                    },
+                    mode: 'cors'
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    showResult('success', `تم إرسال ${items.length} عنصر بنجاح!`, resultDiv);
+                } else {
+                    throw new Error(`استجابة الخادم: ${response.status}`);
+                }
+            } catch (error) {
+                console.error('خطأ في الاتصال:', error);
+                
+
+                const simulatedResponse = await simulateItemsResponse(access, items);
+                showResult('warning', 
+                    ` <br>
+                    <small>المحاكاة: ${simulatedResponse.message}</small>`, resultDiv);
+                
+                console.log('استجابة محاكاة:', simulatedResponse);
+            } finally {
+                this.innerHTML = 'إرسال العناصر';
+                this.disabled = false;
+            }
+        });
+        
+        // إظهار نتيجة العملية
+        function showResult(type, message, resultDiv, permanent = false) {
+            resultDiv.className = 'result ' + type;
+            resultDiv.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'warning' ? 'fa-exclamation-triangle' : type === 'info' ? 'fa-info-circle' : 'fa-exclamation-circle'}"></i> ${message}`;
+            resultDiv.style.display = 'block';
+            
+            // إخفاء النتيجة بعد 5 ثوان إلا إذا كانت دائمة
+            if (!permanent) {
+                setTimeout(() => {
+                    resultDiv.style.display = 'none';
+                }, 5000);
+            }
+        }
+        
+        // تهيئة الصفحة
+        window.addEventListener('load', function() {
+            createParticles();
+            checkServerStatus();
+            
+            // تأثيرات كتابة للمكانن
+            const inputs = document.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'scale(1.02)';
+                    this.parentElement.style.transition = 'transform 0.3s ease';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
